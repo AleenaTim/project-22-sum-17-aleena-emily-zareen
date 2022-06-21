@@ -1,45 +1,86 @@
 {% extends "base.html" %}
 
 {% block content %}
-<title>{% block title%}Home{% endblock %}</title>
-
-<link lang='sass' rel="stylesheet" href="./static/styles/main.css">
-</head>
-<!--Madagascar penguin gifs slideshow-->
-<div class="slider">
-    <img src="./static/img/1.gif" class="slide-1">
-    <img src="./static/img/2.gif" class="slide-2">
-    <img src="./static/img/3.gif" class="slide-3">
-    <img src="./static/img/4.gif" class="slide-4">
-    <h6>Meet the</h6>
-    <h1>Pipelining Penguins</h1>
-    <h4>Team 1</h4>
-</div>
+<link rel="stylesheet" href="./static/styles/main.css">
+<title>{% block title %}Aleena Tim{% endblock %}</title>
 
 <body>
-    <div class="container">
-        <div class="about">
-            <div class="title">
-                <h2>Meet the Team!</h2>
-            </div>
-            <div class="box">
-                {% for i in allUsers.students %}
-                <div class="card">
-                    <a href="/{{i.username}}-portfolio"><img src="./static/img/{{i.name.split()[0]}}.png"></a>
-                    <h3>{{ i.name }}</h3>
-                    <h5><span class="major_color">{{ i.education[0]['major']}}<br></span><span class="college_color">
-                            @
-                            {{ i.education[0]['name']}}</span></h5>
-                    <div class="pra">
-                        <p style="text-align: center;">
-                            <a class="button" href="/{{i.username}}-portfolio">View Profile</a>
-                        </p>
-                    </div>
-                </div>
-                {% endfor %}
+    
 
+
+    <section class="hero">
+        <nav>
+            <img class="logo" src="src/images/logo.png" alt="firstName"/>
+            <ul id="nav-list">
+                <li><a href="#about-me">About me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact-me">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        <div class="hero-area">
+          <div class="hero-text">
+              <h1>firstName lastName</h1>
+              <p>Aspiring Software Engineer</p>
+              <div class="button"><a href="#about-me">About me</a></div>
+          </div>
+        </div>
+    </section>
+    <section class="sub-section" id="about-me">
+        <div class="information">
+            <h2>About Me</h2>
+            <p>{% block about %}{% endblock %}</p>
+        </div>
+        <div class="headshot-container">
+            <img class="headshot" src="src/images/headshot.jpg" alt="[profile-picture]"/>
+        </div>
+    </section>
+    <section class="sub-section-alternative" id="projects">
+        <h2>Projects</h2>
+        <div class="project-container">
+            <div class="project-card">
+                <img class="project-image" src="src/images/project1.jpg" alt="Project One Image"/>
+                <h3>{% block projecttitle1 %}{% endblock %}</h3>
+                <p class="subtext">{% block projectdescription1 %}{% endblock %}</p>
+                <hr/>
+                <p class="subtext"><a class="project-link" href="https://www.github.com/kubowania">View here</a></p>
+            </div>
+            <div class="project-card">
+              <img class="project-image" src="src/images/project2.jpg" alt="Project One Image"/>
+              <h3>Project Two</h3>
+              <p class="subtext">This is my project and some text about it. I enjoyed making this project.</p>
+              <hr/>
+              <p class="subtext"><a class="project-link" href="https://www.github.com/kubowania">View here</a></p>
+            </div>
+            <div class="project-card">
+              <img class="project-image" src="src/images/project3.png" alt="Project One Image"/>
+              <h3>Project Three</h3>
+              <p class="subtext">This is my project and some text about it. I enjoyed making this project.</p>
+              <hr/>
+              <p class="subtext"><a class="project-link" href="https://www.github.com/kubowania">View here</a></p>
+            </div>
+            <div class="project-card">
+              <img class="project-image" src="src/images/Project4.jpg" alt="Project One Image"/>
+              <h3>Project Four</h3>
+              <p class="subtext">This is my project and some text about it. I enjoyed making this project.</p>
+              <hr/>
+              <p class="subtext"><a class="project-link" href="https://www.github.com/kubowania">View here</a></p>
             </div>
         </div>
-    </div>
+    </section>
+    <footer id="contact-me">
+        <h2>Contact me</h2>
+        <p>student@nyu.edu</p>
+    </footer>
+  <script>const hamburgerButton = document.getElementById('hamburger')
+    const navList = document.getElementById('nav-list')
+    
+    function toggleButton() {
+        navList.classList.toggle('show')
+    }
+    
+    hamburgerButton.addEventListener('click', toggleButton)</script>
 </body>
 {% endblock %}

@@ -7,29 +7,19 @@ from dotenv import load_dotenv
 load_dotenv()
 app = Flask(__name__)
 app.register_blueprint(map_app)
-dataFile = open("/root/project-22-sum-17-aleena-emily-zareen/app/static/data.json" , encoding = "utf-8")
-
+#dataFile = open("/root/project-22-sum-17-aleena-emily-zareen/app/static/data.json" , encoding = "utf-8")
+dataFile = open("app/static/data.json" , encoding = "utf-8")
 data = json.load(dataFile)
 
 @app.route('/')
 def index():    
     allUsers = data    
-    return render_template('index.html', title="Home", allUsers=allUsers)
+    return render_template('index.html', title="Aleena Tim", allUsers=allUsers)
 
 @app.route('/aleena-tim-portfolio')
 def aleena_portfolio():
     allUsers = data    
     return render_template('aleena-tim-portfolio.html', allUsers=allUsers)
-
-@app.route('/emily-lai-portfolio')
-def emily_portfolio():
-    allUsers = data    
-    return render_template('emily-lai-portfolio.html', allUsers=allUsers)
-
-@app.route('/zareen-kabir-portfolio')
-def zareen_portfolio():
-    allUsers = data    
-    return render_template('zareen-kabir-portfolio.html', allUsers=allUsers)
 
 @app.route('/hobbies')
 def hobbies():    
